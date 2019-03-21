@@ -24,7 +24,6 @@ router.post('/create', (req, res) => {
 
             data.password = undefined;
             return res.send(data);
-            
         });
     });
 });
