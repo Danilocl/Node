@@ -2,6 +2,14 @@
 const express = require('express');
 const app = express();
 
+
+const indexRoute = require('./routes/index');
+const usersRoute = require('./routes/users');
+
+app.use('/',indexRoute);
+app.use('/users',usersRoute);
+
+/* 
 //Cria os metodos de requisicoes
 app.get('/',(req,res) => {
     let obj = req.query;
@@ -12,6 +20,7 @@ app.get('/',(req,res) => {
 app.post('/',(req,res) => {
     return res.send({message: 'Tudo ok com o método POST!'})
 });
+*/
 
 //Especifica a porta à ser escutada no navegador
 app.listen(3000);
