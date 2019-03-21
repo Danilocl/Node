@@ -1,13 +1,2 @@
-# Node
-Repositório de estudo em node
-
-# Inicializando o projeto
-`npm init`
-  
-# Intalando dependências
-`npm install express --save`
-`npm install mongoose --save`
-`npm install body-parser --save`
-  
-  
-  
+# Nodejs API Básico - Aula 5 - Bcrypt e criptografia de campos
+Criptografando campos de senha com bcrypt.

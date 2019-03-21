@@ -1,28 +1,36 @@
-//Chama o framework express
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
+const url = 'mongodb+srv://admin:merda236@clusterapi-node-ae68q.mongodb.net/test?retryWrites=true';
+const options = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500, poolSize: 5, useNewUrlParser: true };
 
-const indexRoute = require('./routes/index');
-const usersRoute = require('./routes/users');
+mongoose.connect(url, options);
+mongoose.set('useCreateIndex', true);
 
-app.use('/',indexRoute);
-app.use('/users',usersRoute);
+mongoose.connection.on('error', (err) => {
+    console.log('Erro na conexão com o banco de dados: ' + err);
+})
 
-/* 
-//Cria os metodos de requisicoes
-app.get('/',(req,res) => {
-    let obj = req.query;
-    return res.send({message: `Você enviou o nome ${obj.nome} com a idade: ${obj.idade} anos!`});
-});
+mongoose.connection.on('disconnected', () => {
+    console.log('Aplicação desconectada do banco de dados!');
+})
 
+mongoose.connection.on('connected', () => {
+    console.log('Aplicação conectada ao banco de dados!');
+})
 
-app.post('/',(req,res) => {
-    return res.send({message: 'Tudo ok com o método POST!'})
-});
-*/
+//BODY PARSER
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-//Especifica a porta à ser escutada no navegador
+const indexRoute = require('./Routes/index');
+const usersRoute = require('./Routes/users');
+
+app.use('/', indexRoute);
+app.use('/users', usersRoute);
+
 app.listen(3000);
 
 module.exports = app;
