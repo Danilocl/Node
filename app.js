@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-const url = 'mongodb+srv://usuario_admin:55kdjSKGMOda3@clusterapi-3katt.mongodb.net/test?retryWrites=true';
+const url = 'mongodb+srv://admin:merda236@clusterapi-node-ae68q.mongodb.net/test?retryWrites=true';
 const options = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500, poolSize: 5, useNewUrlParser: true };
 
 mongoose.connect(url, options);
