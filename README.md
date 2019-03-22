@@ -1,2 +1,7 @@
-# Nodejs API Básico - Aula 5 - Bcrypt e criptografia de campos
-Criptografando campos de senha com bcrypt.
+# Nodejs API Básico
+
+# Dependências
+ `npm install mongoose --save`,
+ `npm install express --save`,
+ `npm install bcrypt --save`
+ 
